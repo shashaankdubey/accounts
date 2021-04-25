@@ -2,7 +2,7 @@
 
 This is a spring boot project having 5 rest APIs for CRUD operations.
 H2 is used as in memory database.
-It folows the basic project structure, controller folder for controller layer, service folder for service layer, repository folder for database operations.
+It follows the basic project structure, controller folder for controller layer, service folder for service layer, repository folder for database operations.
 
 Test Approach :
 There is an integration test class which tests few of the rest APIs running the application end to end as spring boot application.
