@@ -6,6 +6,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,8 +50,12 @@ public class AccountsController {
 	
 	@RequestMapping(path="/accounts/delete/{id}" , method=RequestMethod.DELETE)
 	public String deleteAccount(@PathVariable("id")Long id) {
-		this.accountService.delete(id);
-		return "Deleted";
+		try {
+			this.accountService.delete(id);
+			return "Deleted";
+		} catch(EmptyResultDataAccessException ex) {
+			return "No Such Records";
+		}
 	}
 	
 }
